@@ -17,11 +17,12 @@ Beatbook se presenta como una agenda cultural personalizada, donde los usuarios 
 ## Capturas de Pantalla
 
 <div align="center">
-  <img width="510" alt="Captura de Pantalla 2024-05-16 a las 11 14 30" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/23278df0-20b3-40db-8376-2a46b3defd73">
+  <img width="510" alt="Captura de Pantalla 2024-05-16 a las 11 14 30" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/6a16f7c2-0b19-434b-89ed-67c95e167762">
 </div>
-<img width="500" alt="Captura de Pantalla 2024-05-16 a las 12 54 35" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/a6ce854d-5935-4faf-9e46-cdf8d8005d66"> <img width="500" alt="Captura de Pantalla 2024-05-16 a las 12 54 57" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/8698594e-ad12-4302-bc48-3634b395b28f">
+<img width="500" alt="Captura de Pantalla 2024-05-16 a las 12 54 35" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/dadf3476-f82e-4d6f-b16c-793255b74725">
+<img width="500" alt="Captura de Pantalla 2024-05-16 a las 12 54 57" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/340d8992-7fea-4c69-b7eb-4535a8e2d201">
 <div align="center">
-  <img width="510" alt="Captura de Pantalla 2024-05-16 a las 12 35 44" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/e311145c-4c53-4097-80ab-df666acc741c">
+ <img width="510" alt="Captura de Pantalla 2024-05-16 a las 12 35 44" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/eab0848c-1530-460f-99fb-7c829a445dbc">
 </div>
 
 ## Instalación
