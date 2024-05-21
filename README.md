@@ -1,81 +1,114 @@
-# WebApp boilerplate with React JS and Flask API
+# Beatbook
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+Beatbook se presenta como una agenda cultural personalizada, donde los usuarios generan el propio contenido, compartiendo eventos, lugares y grupos de música. Nos centramos en dar visibilidad a estos tres pilares, permitiendo a los usuarios descubrir planes atractivos según sus preferencias.
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deployment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+## Objetivos
 
-### 1) Installation:
+- Permitir a los usuarios descubrir eventos, lugares y grupos de música alineados con sus preferencias.
 
-> If you use Github Codespaces (recommended) or Gitpod this template will already come with Python, Node and the Posgres Database installed. If you are working locally make sure to install Python 3.10, Node 
+- Facilitar el acceso a información sobre eventos musicales en vivo, ayudando a los usuarios a encontrar planes atractivos de manera rápida y sencilla.
 
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
+- Fomentar la participación de los usuarios, permitiéndoles generar contenido y compartir sus experiencias musicales.
 
-1. Install the python packages: `$ pipenv install`
-2. Create a .env file based on the .env.example: `$ cp .env.example .env`
-3. Install your database engine and create your database, depending on your database you have to create a DATABASE_URL variable with one of the possible values, make sure you replace the valudes with your database information:
+## Tecnologías Usadas
 
-| Engine    | DATABASE_URL                                        |
-| --------- | --------------------------------------------------- |
-| SQLite    | sqlite:////test.db                                  |
-| MySQL     | mysql://username:password@localhost:port/example    |
-| Postgress | postgres://username:password@localhost:5432/example |
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB) ![CSS](https://img.shields.io/badge/CSS-239120?style=for-the-badge&logo=css3&logoColor=white) ![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E) ![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54) ![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white) ![SQL](https://img.shields.io/badge/SQL-4479A1?style=for-the-badge&logo=postgresql&logoColor=white) ![Cloudinary](https://img.shields.io/badge/Cloudinary-3448C5?style=for-the-badge&logo=cloudinary&logoColor=white) ![Leaflet](https://img.shields.io/badge/Leaflet-199900?style=for-the-badge&logo=Leaflet&logoColor=white)
 
-4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
-5. Run the migrations: `$ pipenv run upgrade`
-6. Run the application: `$ pipenv run start`
+## Capturas de Pantalla
 
-> Note: Codespaces users can connect to psql by typing: `psql -h localhost -U gitpod example`
+<div align="center">
+  <img width="510" alt="Captura de Pantalla 2024-05-16 a las 11 14 30" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/23278df0-20b3-40db-8376-2a46b3defd73">
+</div>
+<img width="500" alt="Captura de Pantalla 2024-05-16 a las 12 54 35" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/a6ce854d-5935-4faf-9e46-cdf8d8005d66"> <img width="500" alt="Captura de Pantalla 2024-05-16 a las 12 54 57" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/8698594e-ad12-4302-bc48-3634b395b28f">
+<div align="center">
+  <img width="510" alt="Captura de Pantalla 2024-05-16 a las 12 35 44" src="https://github.com/Luisgr10/BeatBooK/assets/147260322/e311145c-4c53-4097-80ab-df666acc741c">
+</div>
 
-### Undo a migration
+## Instalación
 
-You are also able to undo a migration by running
+   Si utilizas Github Codespaces (recomendado) o Gitpod, esta plantilla ya vendrá con Python, Node y la base de datos Postgres instalados. Si trabajas localmente, asegúrate de instalar Python 3.10, Node.
 
-```sh
-$ pipenv run downgrade
-```
+**Instalar el backend primero**:
+   Asegúrate de tener Python 3.8, Pipenv y un motor de base de datos (Postgres recomendado).
 
-### Backend Populate Table Users
+**Instalar los paquetes de Python**:
+   ```sh
+   $ pipenv install
+   ```
 
-To insert test users in the database execute the following command:
+**Crear un archivo .env basado en .env.example**:
+   ```sh
+   $ cp .env.example .env
+   ```
+  ```sh
+  Ejemplo:
 
-```sh
-$ flask insert-test-users 5
-```
+  # This file includes global variables that will be available inside your project
+  # 1. In the front end code you can access this variables like this: console.log(process.env.VARIABLE_NAME)
+  # 1. In the back end code you access the variable by importing os and then typing print(os.getenv('VARIABLE_NAME'))
+  
+  # Back-End Variables
+  DATABASE_URL=postgres://gitpod:postgres@localhost:5432/example
+  FLASK_APP_KEY="any key works"
+  FLASK_APP=src/app.py
+  FLASK_DEBUG=1
+  DEBUG=TRUE
+  CLOUDINARY_API_KEY=
+  CLOUDINARY_API_SECRET=
+  
+  # Front-End Variables
+  BASENAME=/
+  BACKEND_URL= 
+  ```
+  
 
-And you will see the following message:
+**Instalar tu motor de base de datos y crear tu base de datos**:
+   Dependiendo de tu base de datos, debes crear una variable `DATABASE_URL` con uno de los posibles valores, asegurándote de reemplazar los valores con la información de tu base de datos:
 
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
+   | Motor     | DATABASE_URL                               |
+   |-----------|--------------------------------------------|
+   | SQLite    | sqlite:////test.db                         |
+   | MySQL     | mysql://username:password@localhost:port/example |
+   | Postgres  | postgres://username:password@localhost:5432/example |
 
-### **Important note for the database and the data inside it**
+**Migrar las migraciones** (saltar si no has hecho cambios en los modelos en `./src/api/models.py`):
+   ```sh
+   $ pipenv run migrate
+   ```
 
-Every Github codespace environment will have **its own database**, so if you're working with more people eveyone will have a different database and different records inside it. This data **will be lost**, so don't spend too much time manually creating records for testing, instead, you can automate adding records to your database by editing ```commands.py``` file inside ```/src/api``` folder. Edit line 32 function ```insert_test_data``` to insert the data according to your model (use the function ```insert_test_users``` above as an example). Then, all you need to do is run ```pipenv run insert-test-data```.
+**Ejecutar las migraciones**:
+   ```sh
+   $ pipenv run upgrade
+   ```
 
-### Front-End Manual Installation:
+**Ejecutar la aplicación**:
+   ```sh
+   $ pipenv run start
+   ```
 
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
+   **Nota**: Los usuarios de Codespaces pueden conectarse a psql escribiendo:
+   ```sh
+   psql -h localhost -U gitpod example
+   ```
 
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
+**Deshacer una migración**:
+   También puedes deshacer una migración ejecutando:
+   ```sh
+   $ pipenv run downgrade
+   ```
+**Instalación Manual del Front-End**
 
-## Publish your website!
+1. Asegúrate de estar usando la versión 14+ de Node y de haber instalado y ejecutado exitosamente el backend.
+2. Instala los paquetes:
+   ```sh
+   $ npm install
+   ```
+3. ¡Empieza a codificar! Inicia el servidor de desarrollo de webpack:
+   ```sh
+   $ npm run start
+   ```
+   
+## **Nota importante sobre la base de datos y los datos en su interior**
 
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
+Cada entorno de Github Codespaces tendrá **su propia base de datos**, por lo que si estás trabajando con más personas, cada uno tendrá una base de datos diferente y registros diferentes dentro de ella. Estos datos **se perderán**, así que no pases demasiado tiempo creando registros manualmente para pruebas. En su lugar, puedes automatizar la adición de registros a tu base de datos editando el archivo ```commands.py``` dentro de la carpeta ```/src/api```. Edita la línea 32 de la función ```insert_test_data``` para insertar los datos según tu modelo (utiliza la función ```insert_test_users``` anterior como ejemplo). Luego, todo lo que necesitas hacer es ejecutar ```pipenv run insert-test-data```.
 
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
