@@ -1,6 +1,6 @@
 body::before {
   content: "";
-  background: url("https://i.ibb.co/CBbZdD9/fondo-nubes.jpg") center/cover no-repeat fixed;
+
   position: fixed;
   top: 0;
   left: 0;
