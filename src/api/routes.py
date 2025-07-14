@@ -33,7 +33,7 @@ from sendgrid.helpers.mail import Mail
 
 
 cloudinary.config( 
-  cloud_name = "daxbjkj1j", 
+  cloud_name = os.environ["CLOUDINARY_CLOUD_NAME"], 
   api_key = os.environ["CLOUDINARY_API_KEY"], 
   api_secret = os.environ["CLOUDINARY_API_SECRET"]  
 )
@@ -261,16 +261,28 @@ def sign_up():
 @api.route('/log_in', methods=['POST'])
 def log_in():
     request_body = request.get_json()
-    if not 'email' in request_body:
-        return jsonify("Email is required"), 400
-    if not 'password' in request_body:
-        return jsonify("Password is required"), 400
+    if not request_body:
+        return jsonify({"msg": "Request body must be JSON"}), 400
+    if 'email' not in request_body:
+        return jsonify({"msg": "Email is required"}), 400
+    if 'password' not in request_body:
+        return jsonify({"msg": "Password is required"}), 400
+
     user = User.query.filter_by(email=request_body["email"]).first()
-    if user is None or not bcrypt.checkpw(request_body["password"].encode('utf-8'), user.password):
-        return jsonify("Invalid email or password"), 400
-    # Genera un token para el usuario que inició sesión
+    if user is None or user.password is None:
+        return jsonify({"msg": "Invalid email or password"}), 400
+    if not bcrypt.checkpw(request_body["password"].encode('utf-8'), user.password):
+        return jsonify({"msg": "Invalid email or password"}), 400
+
     access_token = create_access_token(identity=str(user.id))
-    return jsonify({ 'message': 'Logged in successfully', 'token': access_token, 'email': user.email, 'username': user.username , 'user_id': user.id, 'profileimage': user.profile_image_url ,}), 200
+    return jsonify({
+        'message': 'Logged in successfully',
+        'token': access_token,
+        'email': user.email,
+        'username': user.username,
+        'user_id': user.id,
+        'profileimage': user.profile_image_url,
+    }), 200
 
 @api.route("/private", methods=["GET"])
 @jwt_required()
