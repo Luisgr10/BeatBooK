@@ -21,15 +21,11 @@ export const Profile = () => {
   }, []);
 
   return (
-    <div className="container">
+    <div className="profile-container">
       {isLoggedIn && (
         <>
-          <div>
-            <ProfileBanner />
-          </div>
-          <div className="">
-            <ProfileBody />
-          </div>
+          <ProfileBanner />
+          <ProfileBody />
         </>
       )}
     </div>
