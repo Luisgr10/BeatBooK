@@ -59,6 +59,14 @@ function copyToClipboard() {
 }
 
 async function getCoordinates(address) {
+  function simplifyAddress(address) {
+    // Intenta extraer ciudad y provincia (últimos dos elementos separados por coma)
+    const parts = address.split(",").map((p) => p.trim());
+    if (parts.length >= 2) {
+      return parts.slice(-2).join(", ");
+    }
+    return address;
+  }
   try {
     const response = await fetch(
       `https://nominatim.openstreetmap.org/search?format=json&q=${address}`
@@ -73,6 +81,12 @@ async function getCoordinates(address) {
       console.error(
         `No se pudo encontrar ninguna ubicación para la dirección: ${address}`
       );
+      // Intenta con dirección simplificada
+      const simple = simplifyAddress(address);
+      if (simple !== address) {
+        console.log("Reintentando con dirección simplificada:", simple);
+        return await getCoordinates(simple);
+      }
       return null;
     }
   } catch (error) {
@@ -122,7 +136,10 @@ export const Event = (props) => {
     if (!eventData) {
       return;
     }
-    getCoordinates(eventData.address).then(setCoordinates);
+    getCoordinates(eventData.address).then((coords) => {
+      setCoordinates(coords);
+      console.log("Coordenadas obtenidas para el mapa:", coords);
+    });
   }, [eventData]);
 
   function isLoggedIn() {
@@ -187,7 +204,10 @@ export const Event = (props) => {
       <Row>
         <div className="d-flex justify-content-center align-items-center text-center pt-3">
           {store.user && eventData.creator_id === store.user.id && (
-            <button onClick={handleOpenModal} className="report-button">
+            <button
+              onClick={handleOpenModal}
+              className="report-button modern-btn"
+            >
               Borrar evento
             </button>
           )}
@@ -203,14 +223,14 @@ export const Event = (props) => {
           <Modal.Footer>
             <button
               type="button"
-              className="btn btn-primary text-black"
+              className="modern-btn"
               onClick={handleCloseModal}
             >
               No
             </button>
             <button
               type="button"
-              className="btn btn-danger text-black"
+              className="modern-btn danger"
               onClick={handleConfirmDelete}
             >
               Sí
@@ -219,7 +239,7 @@ export const Event = (props) => {
         </Modal>
 
         <div className="d-flex justify-content-center mb-3">
-          <h1>{eventData.name}</h1>
+          <h1 className="event-title">{eventData.name}</h1>
         </div>
         <Col
           md={6}
@@ -234,8 +254,12 @@ export const Event = (props) => {
               alt="Descripción de la imagen"
             />{" "}
           </div>
-          <EventDescription eventData={eventData} />
-          <EventMedia eventData={eventData} />
+          <div className="event-section-card">
+            <EventDescription eventData={eventData} />
+          </div>
+          <div className="event-section-card">
+            <EventMedia eventData={eventData} />
+          </div>
           <Row>
             <Col md={6} xs={12}>
               <EventTeams eventData={eventData} />
@@ -252,21 +276,34 @@ export const Event = (props) => {
           {" "}
           <div className="d-flex container justify-content-center align-items-center">
             {" "}
-            <div className="event-details">
-              {" "}
-              <h4>Fecha</h4>
-              <p className="p-2"> {formatEventDate(eventData.date)}</p>{" "}
-              <h4>Precio</h4>
-              <p className="p-2">
+            <div className="event-details-card">
+              <h4 className="event-section-title">Fecha</h4>
+              <p className="event-section-text">
                 {" "}
+                {formatEventDate(eventData.date)}
+              </p>
+              <h4 className="event-section-title">Precio</h4>
+              <p className="event-section-text">
                 {eventData.price === "0" ? "Gratis" : eventData.price} €
-              </p>{" "}
+              </p>
               <div className="event-map">
-                <h4>Dirección</h4>
-                <p className="p-2"> {eventData.address}</p>{" "}
-                {coordinates && <MapComponent coordinates={coordinates} />}
+                <h4 className="event-section-title">Dirección</h4>
+                <p className="event-section-text"> {eventData.address}</p>
+                {coordinates ? (
+                  <MapComponent coordinates={coordinates} />
+                ) : (
+                  <div
+                    style={{
+                      color: "#f5f5f5",
+                      padding: "1rem",
+                      textAlign: "center",
+                    }}
+                  >
+                    No se pudo mostrar el mapa para esta dirección.
+                  </div>
+                )}
               </div>
-            </div>{" "}
+            </div>
           </div>{" "}
           <div className="d-flex-column justify-content-center align-items-center text-center mt-5  pt-5">
             <br></br>
@@ -334,7 +371,7 @@ export const Event = (props) => {
             <hr className="mt-5 " />{" "}
             <div className="d-flex justify-content-center align-items-center text-center pt-3">
               {" "}
-              <Link to="/paginafalsa" className="report-button fs-3">
+              <Link to="/paginafalsa" className="report-button fs-3 modern-btn">
                 Reportar evento
               </Link>
             </div>{" "}

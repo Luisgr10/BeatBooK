@@ -1,26 +1,35 @@
-import React from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Search } from "./navbar/search";
 import { Login } from "./navbar/login";
-import { useEffect, useState } from "react";
 import "./navbar/buttonJoin.css";
-import LogoHorizontal from "./navbar/beatBoxHorizontal.png";
+import "./navbar/modern-navbar.css";
 import LogoHorizontalBlanco from "./navbar/beatBoxHorizontalBlanco.png";
 import "./navbar/logo.css";
-import { SecondaryNavbar } from "./navbar/navbarSecondary";
-import { useContext } from "react";
 import { Context } from "../store/appContext";
-import { Menu, MenuItem, Button, Hidden } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import { Menu, MenuItem, Button, Hidden } from "@material-ui/core";
+import MenuIcon from "@material-ui/icons/Menu";
 
 export const AppNavbar = () => {
   const { store, actions } = useContext(Context);
+  const [anchorEl, setAnchorEl] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
+
   useEffect(() => {
     actions.checkUser();
   }, []);
-  const [anchorEl, setAnchorEl] = useState(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const isScrolled = window.scrollY > 20;
+      if (isScrolled !== scrolled) {
+        setScrolled(isScrolled);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [scrolled]);
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,106 +39,91 @@ export const AppNavbar = () => {
     setAnchorEl(null);
   };
 
-
   return (
-    <div className="hahahah"
-      style={{
-        position: "sticky",
-        top: 0,
-        zIndex: 1000,
-        maxWidth: "100vw",
-      }}
-    >
-      {" "}
-      <div className="container-fluid m-0 p-0">
-        <div className="" style={{ maxWidth: "100vw", }}>
-          <nav
-            className="navbar navbar-expand bg-black  d-flex justify-content-between align-items-center"
-            style={{
-              boxShadow: "0 0 10px rgba(0,0,0,0.1)",
-              marginBottom: "0",
-              paddingBottom: "0",
-              paddingRight: "0",
-              marginRight: "0",
-              maxWidth: "100vw",
-            }}
-          >
-            {" "}
-            <div className="d-flex justify-content-start ps-3">
-              {/* Logo o nombre de la aplicación */}
-              <Link to="/home" >
-                <img
-                  src={LogoHorizontalBlanco}
-                  alt="My Image"
-                  className="logoHorizontal"
-                />
-              </Link>
-              <Hidden lgUp>
-                <Button aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick} style={{ color: 'white', backgroundColor: 'black' }}>
+    <div className={`modern-navbar ${scrolled ? "scrolled" : ""}`}>
+      <div className="navbar-container">
+        <nav className="navbar-content">
+          {/* Logo Section */}
+          <div className="navbar-brand">
+            <Link to="/home" className="logo-link">
+              <img
+                src={LogoHorizontalBlanco}
+                alt="BeatBooK"
+                className="navbar-logo"
+              />
+            </Link>
+          </div>
 
-                  <MenuIcon />
-                </Button>
-                <Menu
-                  id="simple-menu"
-                  anchorEl={anchorEl}
-                  keepMounted
-                  open={Boolean(anchorEl)}
-                  onClose={handleClose}
-                >
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/categorias" className="text-black">Categorías</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose} >
-                    <Link to="/eventos" className="text-black">Eventos</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/grupos" className="text-black">Grupos</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Link to="/lugares" className="text-black">Lugares</Link>
-                  </MenuItem>
-                  <MenuItem onClick={handleClose}>
-                    <Search />
-                  </MenuItem>
-                </Menu>
-              </Hidden>
-
-              <Hidden mdDown className="d-flex align-items-center justify-content-center">
-                <Link to="/categorias" style={{ textDecoration: 'none' }} className="white-button text-center text-nowrap">
+          {/* Navigation Links - Desktop */}
+          <Hidden lgUp>
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+              className="mobile-menu-btn"
+            >
+              <MenuIcon />
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+              className="mobile-menu"
+            >
+              <MenuItem onClick={handleClose}>
+                <Link to="/categorias" className="mobile-menu-link">
                   Categorías
                 </Link>
-                <span className="text-white mx-2 align-self-center">|</span>
-
-                <Link to="/eventos" style={{ textDecoration: 'none' }} className="white-button text-center text-nowrap">
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/eventos" className="mobile-menu-link">
                   Eventos
                 </Link>
-                <span className="text-white mx-2 align-self-center">|</span>
-
-                <Link to="/grupos" style={{ textDecoration: 'none' }} className="white-button text-center text-nowrap">
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/grupos" className="mobile-menu-link">
                   Grupos
                 </Link>
-                <span className="text-white mx-2 align-self-center">|</span>
-
-                <Link to="/lugares" style={{ textDecoration: 'none' }} className="white-button text-center text-nowrap">
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
+                <Link to="/lugares" className="mobile-menu-link">
                   Lugares
                 </Link>
-                <span className="text-white mx-2 align-self-center">|</span>
+              </MenuItem>
+              <MenuItem onClick={handleClose}>
                 <Search />
-              </Hidden>
-            </div>
-            {/* Barra de búsqueda */}
-            <div className="d-flex justify-content-center"></div>
-            {/* Botones de registro e inicio de sesión */}
-            <div className="d-flex pe-3">
+              </MenuItem>
+            </Menu>
+          </Hidden>
 
-              <Login />
-            </div>
-          </nav>
-        </div>
+          <Hidden mdDown className="navbar-links">
+            <Link to="/categorias" className="nav-link">
+              Categorías
+            </Link>
+            <div className="nav-separator"></div>
+            <Link to="/eventos" className="nav-link">
+              Eventos
+            </Link>
+            <div className="nav-separator"></div>
+            <Link to="/grupos" className="nav-link">
+              Grupos
+            </Link>
+            <div className="nav-separator"></div>
+            <Link to="/lugares" className="nav-link">
+              Lugares
+            </Link>
+            <div className="nav-separator"></div>
+            <Search />
+          </Hidden>
+
+          {/* User Actions */}
+          <div className="navbar-actions">
+            <Login />
+          </div>
+        </nav>
       </div>
-      {/* <div className="row">
-       <SecondaryNavbar />
-       </div> */}
     </div>
   );
 };

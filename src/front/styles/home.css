@@ -1,80 +1,65 @@
-body::before {
-  content: "";
-
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-}
-
+/* Fondo y fuente global igual que index.css */
 body {
-  position: relative;
-  background: rgba(0, 0, 0, 0.5);
+  background: radial-gradient(ellipse at 60% 20%, #23272f 60%, #181c24 100%);
+  min-height: 100vh;
+  color: #f5f5f5;
+  font-family: 'Inter', Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* Genericos puestos por Miriam que se pueden debatir */
-
-@font-face {
-  font-family: 'Permanent Marker';
-  src: url('https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap') format('truetype');
+/* Títulos destacados con Permanent Marker */
+h1,
+h2,
+h4,
+h5 {
+  font-family: 'Permanent Marker', 'Inter', Arial, sans-serif;
+  color: #fff;
 }
-
 
 h1 {
-  font-family: 'Permanent Marker';
-  color: white;
   font-size: 60px;
 }
 
-h2 {
-  font-family: 'Permanent Marker';
-  color: white;
-  font-size: 30px;
-}
-
-h4 {
-  font-family: 'Permanent Marker';
-  color: white;
-  font-size: 30px;
-}
-
+h2,
+h4,
 h5 {
-  font-family: 'Permanent Marker';
-  color: white;
   font-size: 30px;
 }
 
 h6 {
-  color: white;
+  color: #f5f5f5;
 }
 
-p {
-  color: white;
-  font-family: monospace;
-}
-
-modal p {
-  color: black;
-  font-family: monospace;
-}
-
+/* Texto general */
+p,
+a,
 button {
-  font-family: monospace;
-  color: white;
-  font-size: 30px;
-}
-
-.icono {
-  color: white;
-}
-
-Link {
-  color: white;
+  font-family: 'Inter', Arial, sans-serif;
+  color: #f5f5f5;
 }
 
 a {
-  font-family: monospace;
-  color: white;
+  text-decoration: none;
+  transition: color 0.2s;
 }
+
+a:hover {
+  color: #a0aec0;
+}
+
+button {
+  background: #23272f;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #181c24;
+}
+
+/* Elimina estilos antiguos y genéricos innecesarios */

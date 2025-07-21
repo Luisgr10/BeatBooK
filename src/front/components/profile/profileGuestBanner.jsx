@@ -1,51 +1,53 @@
-import React, { useContext, useEffect } from 'react';
-import { Context } from '../../store/appContext';
+import React, { useContext, useEffect } from "react";
+import { Context } from "../../store/appContext";
 import { useParams } from "react-router-dom";
-import "../profile/profile.css"
-import { Link } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-
-const useStyles = makeStyles((theme) => ({
-
-
-    root: {
-        display: 'flex',
-        '& > *': {
-            margin: theme.spacing(0.2),
-        },
-    },
-}));
+import "../profile/profile.css";
 
 export const ProfileGuestBanner = () => {
-    const { store, actions } = useContext(Context);
-    const { id } = useParams();
+  const { store, actions } = useContext(Context);
+  const { id } = useParams();
 
-    useEffect(() => {
-        actions.getUser(id).then((data) => {
-            console.log(data)
-        });
-      },[]);
+  useEffect(() => {
+    actions.getUser(id);
+  }, []);
 
-
-    
-    return (
-        <div className="container text-center">
-              <div className="row  text-start">
-                <div className='col-12 Banner'>
-                    <img src={store.singleUser.banner_picture} className='img-fluid' ></img>
-                </div>
-                </div>
-                <div className="row mt-3 p-1" >
-                <div className=" profileName col-12 col-md-12 col-xl-12 d-flex justify-content-start align-items-center grid gap-3 mb-4">
-                    <img className='ProfilePicture p-3' src={store.singleUser.profile_image_url} alt='perfil' />
-                    <h1>{store.singleUser.username}</h1>
-                </div>
-                </div>
+  return (
+    <div className="profile-header">
+      {/* Banner Section */}
+      <div className="profile-banner">
+        <div className="banner-image">
+          <img
+            src={store.singleUser?.banner_picture || "/default-banner.jpg"}
+            alt="Banner"
+            className="banner-img"
+          />
+        </div>
+      </div>
+      {/* Profile Info Section */}
+      <div className="profile-info-section">
+        <div className="profile-info-container">
+          {/* Profile Picture */}
+          <div className="profile-picture-container">
+            <div className="profile-picture">
+              <img
+                src={
+                  store.singleUser?.profile_image_url || "/default-avatar.jpg"
+                }
+                alt="Profile"
+                className="profile-img"
+              />
             </div>
-
-    );
-}
-
-
-
+          </div>
+          {/* Profile Name */}
+          <div className="profile-details">
+            <div className="profile-name-section">
+              <h1 className="profile-name">
+                {store.singleUser?.username || "Usuario"}
+              </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};

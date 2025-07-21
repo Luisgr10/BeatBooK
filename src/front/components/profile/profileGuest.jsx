@@ -9,20 +9,15 @@ export const ProfileGuest = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("jwt-token");
-
     if (!token) {
       navigate("/");
     }
   }, []);
 
   return (
-    <div className="container">
-      <div>
-        <ProfileGuestBanner />
-      </div>
-      <div className="">
-        <ProfileGuestBody />
-      </div>
+    <div className="profile-container">
+      <ProfileGuestBanner />
+      <ProfileGuestBody />
     </div>
   );
 };

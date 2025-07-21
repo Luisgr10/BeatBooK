@@ -2,48 +2,79 @@
     border-radius: 10px;
 }
 
-.c-item { 
-height: 580px;
-max-width: 100%;
-border-radius: 2%;
+.c-item {
+    height: 580px;
+    max-width: 100%;
+    border-radius: 2%;
 }
 
 .c-img {
-height: 100%;
-object-fit: cover;
-filter: brightness(0.8);
-border-radius: 2%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.8);
+    border-radius: 2%;
 }
 
 .title {
-    color: white; /* Color del texto blanco */
-    font-size: 30px; /* Tamaño de fuente */
-    font-weight: bold; /* Peso de la fuente en negrita */
-    padding: 10px; /* Espaciado interno */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    color: white;
+    /* Color del texto blanco */
+    font-size: 30px;
+    /* Tamaño de fuente */
+    font-weight: bold;
+    /* Peso de la fuente en negrita */
+    padding: 10px;
+    /* Espaciado interno */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .description {
-    color: white; /* Color del texto blanco */
-    font-size: 18px; /* Tamaño de fuente */
-    font-weight: normal; /* Peso de la fuente en negrita */
-    padding: 10px; /* Espaciado interno */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); 
+    color: white;
+    /* Color del texto blanco */
+    font-size: 18px;
+    /* Tamaño de fuente */
+    font-weight: normal;
+    /* Peso de la fuente en negrita */
+    padding: 10px;
+    /* Espaciado interno */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Fondo y bordes para el caption del carrusel */
+.carousel-caption-bg {
+    background: rgba(30, 34, 44, 0.85);
+    border-radius: 16px;
+    padding: 12px 24px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Título del carrusel con fuente destacada */
+.carousel-title {
+    font-family: 'Permanent Marker', 'Inter', Arial, sans-serif;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
 }
 
 @media screen and (max-width: 600px) {
-  
-    
+
+
     .carousel-caption h5 {
         font-size: 20px;
         font-weight: bold;
-        margin-bottom: 10px; /* Puedes ajustar el margen según sea necesario */
+        margin-bottom: 10px;
+        /* Puedes ajustar el margen según sea necesario */
     }
-    
+
     .carousel-caption p {
         font-size: 12px;
-        margin-bottom: 0; /* Puedes ajustar el margen según sea necesario */
+        margin-bottom: 0;
+        /* Puedes ajustar el margen según sea necesario */
     }
-    
+
+    .carousel-title {
+        font-size: 20px;
+    }
 
 }

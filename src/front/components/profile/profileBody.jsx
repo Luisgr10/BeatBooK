@@ -148,27 +148,15 @@ export const ProfileBody = (props) => {
 
           {/* Social Links */}
           {(store.currentUser?.instagram || store.currentUser?.tiktok) && (
-            <div className="social-links">
+            <div className="profile-social-icons">
               {store.currentUser?.instagram && (
-                <a
-                  href={store.currentUser.instagram}
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={store.currentUser.instagram} className="profile-social-btn" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-instagram"></i>
-                  <span>Instagram</span>
                 </a>
               )}
               {store.currentUser?.tiktok && (
-                <a
-                  href={store.currentUser.tiktok}
-                  className="social-link"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a href={store.currentUser.tiktok} className="profile-social-btn" target="_blank" rel="noopener noreferrer">
                   <i className="fab fa-tiktok"></i>
-                  <span>TikTok</span>
                 </a>
               )}
             </div>

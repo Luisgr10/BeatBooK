@@ -214,30 +214,31 @@ export const ProfileBanner = () => {
                 <i className="fas fa-edit"></i>
                 Editar perfil
               </button>
-
               <div className="dropdown">
                 <button
                   className="action-btn secondary dropdown-toggle"
                   type="button"
                   data-bs-toggle="dropdown"
+                  data-bs-display="static"
+                  aria-expanded="false"
                 >
                   <i className="fas fa-plus"></i>
                   Crear
                 </button>
-                <ul className="dropdown-menu">
+                <ul className="dropdown-menu profile-dropdown-menu">
                   <li>
                     <a className="dropdown-item" href="/event/registre">
-                      Crear evento
+                      <i className="fas fa-calendar-plus me-2"></i>Crear evento
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="/banda/registre">
-                      Crear banda
+                      <i className="fas fa-users me-2"></i>Crear banda
                     </a>
                   </li>
                   <li>
                     <a className="dropdown-item" href="/lugar/registre">
-                      Crear local
+                      <i className="fas fa-map-marker-alt me-2"></i>Crear local
                     </a>
                   </li>
                 </ul>

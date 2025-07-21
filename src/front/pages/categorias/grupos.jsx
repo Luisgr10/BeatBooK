@@ -20,7 +20,7 @@ export const Grupos = () => {
         {groups.map((band) => (
           <div
             className="containerCard noselect item"
-            onClick={() => (window.location.href = `/grupos/${band.id}`)}
+            onClick={() => (window.location.href = `/banda/${band.id}`)}
           >
             <div className="canvas">
               <div className="tracker tr-1"></div>

@@ -9,169 +9,135 @@ import GitHubIcon from "@material-ui/icons/GitHub";
 
 export const Footer = () => {
   return (
-    <footer className="mt-5 estilofooter">
-      <div className="container">
-        <div className="row">
-          <div className="col align-items-center d-flex justify-content-center">
-            <a href="/">
+    <footer className="modern-footer minimal-footer">
+      <div className="footer-container minimal-footer-container">
+        <div className="footer-content minimal-footer-content">
+          {/* Logo & Social */}
+          <div className="footer-brand minimal-footer-brand">
+            <a href="/" className="footer-logo-link">
               <img
                 src={beatBoxHorizontalBlanco}
-                alt="logo_beatbook"
-                className="logo"
+                alt="BeatBooK"
+                className="footer-logo minimal-footer-logo"
               />
             </a>
+            <div className="footer-social-icons">
+              <a
+                href="https://www.facebook.com/"
+                className="footer-social-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.twitter.com/"
+                className="footer-social-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-twitter"></i>
+              </a>
+              <a
+                href="https://www.instagram.com/"
+                className="footer-social-btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fab fa-instagram"></i>
+              </a>
+            </div>
           </div>
-          <div className="col">
-            <ul className="sinPuntos">
-              <h4>Beatbook</h4>
-              <li>
-                <a href="/paginafalsa">Quiénes somos</a>
-              </li>
-              <li>
-                <a href="/paginafalsa">Cómo funciona</a>
-              </li>
-              <li>
-                <a href="/paginafalsa">Blog</a>
-              </li>
-              <li>
-                <a href="/paginafalsa">Empleo</a>
-              </li>
-            </ul>
+
+          {/* Links */}
+          <div className="footer-links minimal-footer-links">
+            <a href="/paginafalsa" className="footer-link">
+              Quiénes somos
+            </a>
+            <a href="/paginafalsa" className="footer-link">
+              Soporte
+            </a>
+            <a href="/paginafalsa" className="footer-link">
+              Legal
+            </a>
+            <a href="/paginafalsa" className="footer-link">
+              Blog
+            </a>
           </div>
-          <div className="col">
-            <ul className="sinPuntos">
-              <h4>Soporte</h4>
-              <li>
-                <a href="/paginafalsa">Centro de ayuda</a>
-              </li>
-              <li>
-                <a href="/paginafalsa">Reglas de publicación</a>
-              </li>
-              <li>
-                <a href="/paginafalsa">Consejos de Seguridad</a>
-              </li>
-            </ul>
-          </div>
-          <div className="col">
-            <ul className="sinPuntos">
-              <h4>Legal</h4>
-              <li>
-                <a href="/paginafalsa">Politica de privacidad</a>
-              </li>
-              <li>
-                <a href="/paginafalsa">Condiciones de uso</a>
-              </li>
-              <li>
-                <a href="/paginafalsa">Politica de cookies</a>
-              </li>
-            </ul>
-          </div>
-          <div className="col align-items-center d-flex justify-content-center">
-            <div className="container text-center">
-              <div className="row">
-                <div className="col">
-                  <a href="https://www.facebook.com/">
-                    <img
-                      src={Logo_Facebook}
-                      alt="Facebook"
-                      className="redesSociales"
-                    />
+
+          {/* Team */}
+          <div className="footer-team minimal-footer-team">
+            <div className="team-members minimal-team-members">
+              <div className="team-member minimal-team-member">
+                <span className="member-name">Luis Guilarte</span>
+                <div className="member-links">
+                  <a
+                    href="https://www.linkedin.com/in/luisgr10/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-link"
+                  >
+                    <LinkedInIcon className="member-icon" />
+                  </a>
+                  <a
+                    href="https://github.com/Luisgr10"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-link"
+                  >
+                    <GitHubIcon className="member-icon" />
                   </a>
                 </div>
-                <div className="col">
-                  <a href="https://www.twitter.com/">
-                    <img
-                      src={Logo_Twitter}
-                      alt="Twitter"
-                      className="redesSociales"
-                    />
+              </div>
+              <div className="team-member minimal-team-member">
+                <span className="member-name">Miriam Asencio</span>
+                <div className="member-links">
+                  <a
+                    href="https://www.linkedin.com/in/miriam-asencio/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-link"
+                  >
+                    <LinkedInIcon className="member-icon" />
+                  </a>
+                  <a
+                    href="https://github.com/Miritzila"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-link"
+                  >
+                    <GitHubIcon className="member-icon" />
                   </a>
                 </div>
-                <div className="col">
-                  <a href="https://www.instagram.com/">
-                    <img
-                      src={Logo_Instagram}
-                      alt="Instagram"
-                      className="redesSociales"
-                    />
+              </div>
+              <div className="team-member minimal-team-member">
+                <span className="member-name">Heyson Betancourt</span>
+                <div className="member-links">
+                  <a
+                    href="https://www.linkedin.com/in/heyson-betancourt-9b266a299/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-link"
+                  >
+                    <LinkedInIcon className="member-icon" />
+                  </a>
+                  <a
+                    href="https://github.com/heysonbr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="member-link"
+                  >
+                    <GitHubIcon className="member-icon" />
                   </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-
-        <div className="row d-flex align-items-center justify-content-center">
-          <div
-            className="col-12"
-            style={{ display: "flex", alignItems: "center" }}
-          >
-            <hr className="text-white flex-grow-1" />
-            <h5 className="px-2 text-white">Creado por: CtrlSonic</h5>
-            <hr className="text-white flex-grow-1" />
-          </div>
-          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
-            <p className="p-3 d-flex align-items-center justify-content-center">
-              Luis Guilarte
-              <a
-                href="https://www.linkedin.com/in/luisgr10/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon fontSize="large" className="px-1" />
-              </a>
-              <a
-                href="https://github.com/Luisgr10"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon />
-              </a>
-            </p>
-          </div>
-          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
-            <p className="p-3 d-flex align-items-center justify-content-center">
-              Miriam Asencio
-              <a
-                href="https://www.linkedin.com/in/miriam-asencio/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon fontSize="large" className="px-1" />
-              </a>
-              <a
-                href="https://github.com/Miritzila"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon />
-              </a>
-            </p>
-          </div>
-          <div className="col-12 col-md-4 d-flex align-items-center justify-content-center">
-            <p className="p-3 d-flex align-items-center justify-content-center">
-              Heyson Betancourt
-              <a
-                href="https://www.linkedin.com/in/heyson-betancourt-9b266a299/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <LinkedInIcon fontSize="large" className="px-1" />
-              </a>
-              <a
-                href="https://github.com/heysonbr"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <GitHubIcon />
-              </a>
-            </p>
-          </div>
-          <div className="col-12 d-flex align-items-center justify-content-center pt-5">
-            <p className="text-white">
-              © 2024 Beatbook. Todos los derechos reservados.
-            </p>
-          </div>
+        <div className="footer-bottom minimal-footer-bottom">
+          <p className="copyright minimal-copyright">
+            © 2024 BeatBooK. Todos los derechos reservados.
+          </p>
         </div>
       </div>
     </footer>
